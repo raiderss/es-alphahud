@@ -12,7 +12,7 @@ const app = new Vue({
     tool: 100,
     circumference: 339.292,
     lastGearValue: null,
-    type:'car', // standart - car
+    type:'car', 
     speedometer:{
       speed:79,
       nitro:0,
@@ -147,7 +147,6 @@ const app = new Vue({
               break;
   
           case 'STATUS':
-            console.log('STATUS', JSON.stringify(item))
               Object.assign(this.hud, {
                   hunger: { status: item.hunger },
                   water: { status: item.thirst }
@@ -277,13 +276,13 @@ const app = new Vue({
       formattedSpeed() {
         let speed = this.speedometer.speed;
         if (speed == 0) {
-          return `000`; // Hız 0 ise '000' döndür
+          return `000`; 
         } else if (speed < 10) {
-          return `00${speed}`; // Hız tek haneli ise '00x' formatında döndür
+          return `00${speed}`; 
         } else if (speed < 100) {
-          return `0${speed}`; // Hız iki haneli ise '0xx' formatında döndür
+          return `0${speed}`; 
         } else {
-          return `${speed}`; // Diğer durumlarda hız değerini olduğu gibi döndür
+          return `${speed}`; 
         }
       },
       
@@ -302,7 +301,6 @@ const app = new Vue({
       
     }
   })
-  
 
   document.onkeyup = function (data) {
     if (data.which == 27) {
