@@ -1,5 +1,8 @@
 fx_version "adamant"
 
+-- Eyes Alpha Hud / Support
+-- discord.gg/EkwWvFS
+
 game "gta5"
 
 client_script { 
