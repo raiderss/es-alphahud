@@ -1,0 +1,309 @@
+
+@font-face {
+  font-family: Orbitron;
+  src: url(../font/Orbitron-Regular.ttf);
+}
+
+
+body {
+  overflow: hidden;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  align-items: center;
+  justify-content: center;
+}
+
+* {
+  transition: all .47s;
+}
+
+:root {
+  --scrolbar: #EAC43D;
+}
+
+.status {
+  position: absolute;
+  bottom: 0.65rem; 
+  left: 1.35rem;   
+  padding: 0.3rem;
+  .hud {
+    position: relative;
+    margin-top: 0.75rem;
+    flex-wrap: wrap;
+    width: auto;
+    height:fit-content;
+    margin-left: 0.75rem;
+    display: inline-flex;
+    flex-direction: column;
+    filter: drop-shadow(0.5px 0.5px 0.5rem black);
+    z-index: 9999;
+    &:hover {
+      transition: all 1s;
+      transform: scale(0.9);
+    }
+  }
+}
+
+
+.animate-slide-left {
+  animation: slide-left 1.2s ease-in-out;
+}
+
+.animate-slide-up {
+  animation: slide-up 1.2s ease-in-out; 
+}
+
+@keyframes slide-left {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-up {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+
+.location {
+  position: absolute;
+  top: 89%;
+  left: 0.5%;
+  width: auto;
+  max-width: 50%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0.2rem;
+  @media (min-width: 600px) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+  }
+}
+.location-indicator {
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  font-family: Orbitron;
+  color: #E0E0E0;
+  margin: 0.5rem; 
+  @media (min-width: 600px) {
+    flex-direction: row; 
+  }
+}
+.icon-circle {
+  width: 1rem;
+  height: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 0.5rem; 
+}
+.icon-circle img {
+  width: 100%;
+  height: auto;
+}
+.location-text {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.primary-location {
+  font-size: 0.9rem;
+  color: #FFFFFF;
+}
+.secondary-location {
+  font-family: Orbitron;
+  color: #CCCCCC;
+  font-size: 0.6rem;
+}
+
+
+
+
+
+
+
+
+
+.speedometer {
+  position: absolute;
+  bottom: 7vh;   
+  right: 3vw;   
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 17vw;  
+  height: 17vh; 
+}
+
+
+
+#app {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  // background-image: url("../img/background.svg");
+  // background-size: cover;
+  // background-repeat: no-repeat;
+  // background-position: center center;
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromBottom {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-left {
+  animation: slideInFromLeft 1.5s ease-in-out;
+}
+
+.animate-slide-bottom {
+  animation: slideInFromBottom 1.5s ease-in-out;
+}
+
+html {
+  font-size: 16.0px;
+}
+
+@media screen and (width: 4096px) and (height: 2160px) {
+  html {
+    font-size: 31px;
+  }
+}
+
+@media screen and (width: 2560px) and (height: 1440px) {
+  html {
+    font-size: 21.32px;
+  }
+}
+
+@media screen and (width: 3440px) and (height: 1440px) {
+  html {
+    font-size: 21.9px;
+  }
+}
+
+@media screen and (width: 1920px) and (height: 1200px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+@media screen and (width: 1920px) and (height: 1200px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+@media screen and (width: 1920px) and (height: 1440px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+@media screen and (width: 1600px) and (height: 1024px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media screen and (width: 1440px) and (height: 900px) {
+  html {
+    font-size: 12px;
+  }
+}
+
+@media screen and (width: 1680px) and (height: 1050px) {
+  html {
+    font-size: 14.0px;
+  }
+}
+
+@media screen and (width: 1600px) and (height: 900px) {
+  html {
+    font-size: 13.3px;
+  }
+}
+
+@media screen and (width: 1600px) and (height: 1024px) {
+  html {
+    font-size: 13.3px;
+  }
+}
+
+@media screen and (width: 1768px) and (height: 992px) {
+  html {
+    font-size: 15px;
+  }
+}
+@media screen and (width: 1366px) and (height: 768px) {
+  html {
+    font-size: 11.38px;
+  }
+}
+@media screen and (width: 1400px) and (height: 1050px) {
+  html {
+    font-size: 11.7px;
+  }
+}
+@media screen and (width: 1280px) and (height: 1024px) {
+  html {
+    font-size: 11.7px;
+  }
+}
+@media screen and (width: 1280px) and (height: 720px) {
+  html {
+    font-size: 11px;
+  }
+}
+@media screen and (width: 1024px) and (height: 768px) {
+  html {
+    font-size: 10.05px;
+  }
+}
+@media screen and (width: 832px) and (height: 624px) {
+  html {
+    font-size: 8.05px;
+  }
+}
+
+@media screen and (width: 800px) and (height: 600px) {
+  html {
+    font-size: 8px;
+  }
+}
