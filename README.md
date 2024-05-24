@@ -4,7 +4,7 @@
 
 **es-alphahud** is a comprehensive HUD script for FiveM that provides an enhanced user interface for your server. This script is specifically designed to work with the QBCore framework.
 
-[![Cover v0 04](https://github.com/raiderss/es-alphahud/assets/53000629/7d69be7d-d7c2-41f1-bfee-3974f4b9e945)](https://www.youtube.com/watch?v=LI-lh9IooYY)
+[![gt](https://github.com/raiderss/es-alphahud/assets/53000629/467cae25-fda8-4925-8b3a-2f2135950b80)](https://www.youtube.com/watch?v=LI-lh9IooYY)
 
 ## Features
 - **Customizable HUD Elements**: Easily configure and customize various HUD elements to suit your server's needs.
