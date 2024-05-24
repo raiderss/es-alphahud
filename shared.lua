@@ -143,7 +143,7 @@ function GetFramework()
         Get = exports['es_extended']:getSharedObject()
     elseif Config.Framework == "QBCore" then
         Get = exports["qb-core"]:GetCoreObject()
-    elseif Config.Framework == "OldQBCore" then
+    elseif Config.Framework == "OLDQBCore" then
         while Get == nil do
             TriggerEvent('QBCore:GetObject', function(Set) Get = Set end)
             Citizen.Wait(200)
