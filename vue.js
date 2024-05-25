@@ -299,12 +299,6 @@ const app = new Vue({
       
     }
   })
-
-  document.onkeyup = function (data) {
-    if (data.which == 27) {
-      $.post(`https://${GetParentResourceName()}/exit`, JSON.stringify({}));
-    }
-  };
   
 
 
