@@ -10,8 +10,6 @@ const app = new Vue({
       clock:'10:10 AM',
     },
     tool: 100,
-    circumference: 339.292,
-    lastGearValue: null,
     type:'car', 
     speedometer:{
       speed:79,
