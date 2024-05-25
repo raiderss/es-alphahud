@@ -433,7 +433,7 @@ Citizen.CreateThread(function()
         Citizen.Wait(650)
         local isMenuActive = IsPauseMenuActive()
         if isMenuActive ~= pauseActive then
-            exports[GetCurrentResourceName()]:dark(not isMenuActive)
+            exports[GetCurrentResourceName()]:eyestore(not isMenuActive)
             pauseActive = isMenuActive
         end
     end
