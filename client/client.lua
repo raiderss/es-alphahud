@@ -88,33 +88,6 @@ Citizen.CreateThread(function()
     end
 end)
 
-RegisterCommand('parachute', function(source, args, rawCommand)
-    local playerPed = GetPlayerPed(-1) 
-
-    -- Check if the playerPed exists and is alive
-    if playerPed and not IsEntityDead(playerPed) then
-        -- Give parachute to the player
-        GiveWeaponToPed(playerPed, GetHashKey("GADGET_PARACHUTE"), 1, false, true)
-        -- Optional: Equip it immediately
-        SetPedGadget(playerPed, GetHashKey("GADGET_PARACHUTE"), true)
-
-        -- Notify the player
-        -- TriggerEvent('chat:addMessage', {
-        --     color = {255, 0, 0},
-        --     multiline = true,
-        --     args = {"Server", "You have been given a parachute!"}
-        -- })
-    else
-        -- Notify the player if there is an issue
-        -- TriggerEvent('chat:addMessage', {
-        --     color = {255, 0, 0},
-        --     multiline = true,
-        --     args = {"Server", "Unable to give parachute, you are dead or something went wrong."}
-        -- })
-    end
-end, false)
-
-
 local parachuteTintIndex = 6
 local waitTime = 1700
 
@@ -137,13 +110,13 @@ end)
 
 
 
-RegisterNetEvent('HudPlayerLoad', function(dark)
+RegisterNetEvent('HudPlayerLoad', function(eyes)
     Citizen.Wait(tonumber(200))  
     local frameworkType = Config.Framework
     local playerDataFunc = (frameworkType == "ESX" or frameworkType == "NewESX")
         and Framework.GetPlayerData or Framework.Functions.GetPlayerData
     PlayerData = playerDataFunc()  
-    stress = Config.Stress.Enabled and dark or 0
+    stress = Config.Stress.Enabled and eyes or 0
     SendNUIMessage({data = "STRESS", stress = stress})
     if frameworkType == 'QBCore' or frameworkType == 'OLDQBCore' then 
         local metadata = PlayerData.metadata
