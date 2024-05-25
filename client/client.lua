@@ -34,7 +34,7 @@ Citizen.CreateThread(function()
 end)
 
 
-exports('dark', function(state)
+exports('eyestore', function(state)
     SendNUIMessage({ data = 'EXIT', args = state })
 end)
 
