@@ -6,6 +6,15 @@
 
 [![gt](https://github.com/raiderss/es-alphahud/assets/53000629/467cae25-fda8-4925-8b3a-2f2135950b80)](https://www.youtube.com/watch?v=LI-lh9IooYY)
 
+-----------------
+
+`exports['es-alphahud']:eyestore(false)` 
+
+-- true or false
+
+Additionally, as a reminder, you can use the code snippet above to hide the HUD when the gallery is opened. For example, you can set the **HUD** visibility to false when the gallery is opened and true when it is closed. Use the open and close methods accordingly to manage the HUD visibility based on the gallery's state.
+
+-----------------
 ## Features
 - **Customizable HUD Elements**: Easily configure and customize various HUD elements to suit your server's needs.
 - **QBCore Integration**: Fully compatible with QBCore, ensuring a seamless integration.
