@@ -1,6 +1,8 @@
 # [ALPHA HUD](https://www.youtube.com/watch?v=LI-lh9IooYY?si=8fqox9arc9X7SjZQ&t=2)
 
 [![YouTube Subscribe](https://img.shields.io/badge/YouTube-Subscribe-red?style=for-the-badge&logo=youtube)](https://www.youtube.com/watch?v=LI-lh9IooYY)
+[![Discord](https://img.shields.io/badge/Discord-Join-blue?style=for-the-badge&logo=discord)](https://discord.gg/EkwWvFS)
+[![Tebex Store](https://img.shields.io/badge/Tebex-Store-green?style=for-the-badge&logo=shopify)](https://eyestore.tebex.io/)
 
 **es-alphahud** is a comprehensive HUD script for FiveM that provides an enhanced user interface for your server. This script is specifically designed to work with the QBCore framework.
 
