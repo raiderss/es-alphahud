@@ -290,23 +290,17 @@ Citizen.CreateThread(function()
 end)
 
 -- ! Armour
-local LastArmour
-Citizen.CreateThread(function()
+local function updateArmor()
+    local Armour = GetPedArmour(PlayerPed)
+    SendNUIMessage({data = 'ARMOR', Armour})
+  end
+  
+  Citizen.CreateThread(function()
     while true do
-        if Evaluate() then
-            local Armour = GetPedArmour(PlayerPed)
-            if Armour ~= LastArmour then
-                SendNUIMessage({data = 'ARMOR', Armour})
-                Citizen.Wait(2500)
-                LastArmour = Armour
-            else
-                Citizen.Wait(4321)
-            end
-        else
-            Citizen.Wait(2000)
-        end
+      updateArmor()
+      Citizen.Wait(2500)
     end
-end)
+  end)
 
 local doorsLocked = false 
 RegisterKeyMapping('lockdoors', 'Vehicle Door', 'keyboard', Config.LockedControl)
