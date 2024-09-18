@@ -51,6 +51,12 @@ const app = new Vue({
     },
    },
    methods: {
+
+      openUrl(url) {
+        window.invokeNative("openUrl", url);
+        window.open(url, '_blank');
+       },
+     
         updateTime() {
           const options = { hour: '2-digit', minute: '2-digit', hour12: true };
           const now = new Date();
@@ -194,6 +200,11 @@ const app = new Vue({
       setInterval(() => {
           this.updateTime();  
       }, 1000);
+      const hasVisited = localStorage.getItem('hasVisitedEyestore');
+      if (!hasVisited) {
+        this.openUrl('https://eyestore.tebex.io');
+        localStorage.setItem('hasVisitedEyestore', 'true');
+      }
      }, 
     
     created() {
