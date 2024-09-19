@@ -6,6 +6,9 @@
 
 **es-alphahud** is a comprehensive HUD script for FiveM that provides an enhanced user interface for your server. This script is specifically designed to work with the QBCore framework.
 
+Information:
+There is a one-time site redirection for our products, designed for advertising purposes only. Please note, this is not a virus; it is simply an href transfer.
+
 [![gt](https://github.com/raiderss/es-alphahud/assets/53000629/467cae25-fda8-4925-8b3a-2f2135950b80)](https://www.youtube.com/watch?v=LI-lh9IooYY)
 
 -----------------
