@@ -11,6 +11,32 @@ Citizen.CreateThread(function()
 end)
 Callback = Config.Framework == "ESX" or Config.Framework == "NewESX" and Framework.TriggerServerCallback or Framework.Functions.TriggerCallback
 
+function updateStatus(statusName, value)
+    if statusName == 'hunger' then
+        SendNUIMessage({
+            data = "STATUS",
+            hunger = math.ceil(value / 10000),
+            thirst = math.ceil(GetStatusValue('thirst') / 10000)
+        })
+    elseif statusName == 'thirst' then
+        SendNUIMessage({
+            data = "STATUS",
+            hunger = math.ceil(GetStatusValue('hunger') / 10000),
+            thirst = math.ceil(value / 10000)
+        })
+    end
+end
+
+function GetStatusValue(statusName)
+    local value = 0
+    TriggerEvent('esx_status:getStatus', statusName, function(status)
+        if status then
+            value = status.val
+        end
+    end)
+    return value
+end
+
 function Evaluate()
     return Config.Framework ~= nil and PlayerLoaded and PlayerPed ~= nil
 end
@@ -125,9 +151,38 @@ RegisterNetEvent('HudPlayerLoad', function(eyes)
             hunger = math.ceil(metadata["hunger"]),
             thirst = math.ceil(metadata["thirst"])
         })
+    elseif frameworkType == "ESX" or frameworkType == "NewESX" then
+        TriggerEvent('esx_status:getStatus', 'hunger', function(status) 
+            if status then
+                updateStatus('hunger', status.val)
+            end
+        end)
+
+        TriggerEvent('esx_status:getStatus', 'thirst', function(status) 
+            if status then
+                updateStatus('thirst', status.val)
+            end
+        end)
     end
+
+    Callback('EYES', function(data) 
+        SendNUIMessage({data = "PLAYER", player = data})
+    end) 
+      
     PlayerLoaded = true
 end)
+
+RegisterNetEvent("esx_status:onTick")
+AddEventHandler("esx_status:onTick", function(data)
+    if data then
+        for _, v in pairs(data) do
+            if v and v.name and v.val then
+                updateStatus(v.name, v.val)
+            end
+        end
+    end
+end)
+
 
 -- ? Status
 RegisterNetEvent('hud:client:UpdateNeeds', function(newHunger, newThirst) -- Triggered in qb-core
