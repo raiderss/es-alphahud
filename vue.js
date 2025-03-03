@@ -1,5 +1,3 @@
-
-
 const app = new Vue({
   el: '#app',
   data: {
@@ -143,11 +141,16 @@ const app = new Vue({
               });
               break;
           case 'HEALTH':
-            this.hud.health.status = item[1];
+            const healthValue = typeof item.Health !== 'undefined' ? item.Health : 
+                                typeof item.status !== 'undefined' ? item.status : 0;
+            const normalizedHealth = Math.max(0, Math.min(100, parseInt(healthValue) || 0));
+            this.hud.health.status = normalizedHealth;
+            break;
           case 'ARMOR':
-            this.hud.armor.status = item[1];
+            this.hud.armor.status = item.Armour ? item[1] : 0;
+            break;
           case 'OXYGEN':
-              this.hud[item.data.toLowerCase()].status = item[1];
+              this.hud.oxygen.status = item.oxygen;
               break;
   
           case 'STATUS':
