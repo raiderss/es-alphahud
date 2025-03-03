@@ -64,25 +64,25 @@ exports('eyestore', function(state)
     SendNUIMessage({ data = 'EXIT', args = state })
 end)
 
-RegisterCommand("stress", function(source, args, rawCommand)
-    local item = args[1] 
-    local value = tonumber(args[2]) 
-    if item ~= "add" and item ~= "remove" then
-        print("Invalid command, use: stress add [value] or stress remove [value]")
-        return
-    end
-    if not value then
-        print("Please specify a valid number for value.")
-        return
-    end
-    local eventName = item == 'remove' and 'hud:server:RelieveStress' or 'hud:server:GainStress'
-    TriggerServerEvent(eventName, value)
-    print(item == "add" and ("Adding " .. value .. " stress.") or ("Removing " .. value .. " stress."))
-end, false)
-TriggerEvent('chat:addSuggestion', '/stress', 'Modifies stress level', {
-    { name="action", help="add or remove" },
-    { name="value", help="amount of stress to modify" }
-})
+-- RegisterCommand("stress", function(source, args, rawCommand)
+--     local item = args[1] 
+--     local value = tonumber(args[2]) 
+--     if item ~= "add" and item ~= "remove" then
+--         print("Invalid command, use: stress add [value] or stress remove [value]")
+--         return
+--     end
+--     if not value then
+--         print("Please specify a valid number for value.")
+--         return
+--     end
+--     local eventName = item == 'remove' and 'hud:server:RelieveStress' or 'hud:server:GainStress'
+--     TriggerServerEvent(eventName, value)
+--     print(item == "add" and ("Adding " .. value .. " stress.") or ("Removing " .. value .. " stress."))
+-- end, false)
+-- TriggerEvent('chat:addSuggestion', '/stress', 'Modifies stress level', {
+--     { name="action", help="add or remove" },
+--     { name="value", help="amount of stress to modify" }
+-- })
 
 exports('stress', function(item, val)
     local eventName = item == 'remove' and 'hud:server:RelieveStress' or 'hud:server:GainStress'
@@ -105,7 +105,7 @@ Citizen.CreateThread(function()
                 wait = 125
                 oxygen = inWater and GetPlayerUnderwaterTimeRemaining(PlayerId()) * 10 or 100 - newOxygen
                 LastOxygen = newOxygen
-                SendNUIMessage({data = 'OXYGEN', math.ceil(oxygen)})
+                SendNUIMessage({data = 'OXYGEN', oxygen})
             else
                 wait = 1850
             end
@@ -177,7 +177,9 @@ AddEventHandler("esx_status:onTick", function(data)
     if data then
         for _, v in pairs(data) do
             if v and v.name and v.val then
-                updateStatus(v.name, v.val)
+                if v.name == 'hunger' or v.name == 'thirst' then
+                    updateStatus(v.name, v.val)
+                end
             end
         end
     end
@@ -325,14 +327,29 @@ end)
 -- ! Health
 local LastHealth
 Citizen.CreateThread(function()
-    local wait
+    local wait = 500
     while true do
         if Evaluate() then
-            local Health = math.floor((GetEntityHealth(PlayerPed)/2))
-            if IsPedInAnyVehicle(PlayerPed) then wait = 250 else wait = 650 end
+            local Health = GetEntityHealth(PlayerPed)
+            if Health > 0 then
+                Health = math.floor((Health - 100))
+                if Health < 0 then Health = 0 end
+                if Health > 100 then Health = 100 end
+            else
+                Health = 0
+            end
+            
+            if IsPedInAnyVehicle(PlayerPed) then 
+                wait = 250 
+            else 
+                wait = 650 
+            end
+            
             if Health ~= LastHealth then
-                if GetEntityModel(PlayerPed) == `mp_f_freemode_01` and Health ~= 0 then Health = (Health+13) end
-                SendNUIMessage({data = 'HEALTH', Health})
+                if GetEntityModel(PlayerPed) == `mp_f_freemode_01` and Health ~= 0 then 
+                    Health = math.min((Health+13), 100) 
+                end
+                SendNUIMessage({data = 'HEALTH', status = Health})
                 LastHealth = Health
             else
                 wait = wait + 1200
@@ -348,14 +365,14 @@ end)
 local function updateArmor()
     local Armour = GetPedArmour(PlayerPed)
     SendNUIMessage({data = 'ARMOR', Armour})
-  end
-  
-  Citizen.CreateThread(function()
+end
+
+Citizen.CreateThread(function()
     while true do
-      updateArmor()
-      Citizen.Wait(2500)
+        updateArmor()
+        Citizen.Wait(2500)
     end
-  end)
+end)
 
 local doorsLocked = false 
 RegisterKeyMapping('lockdoors', 'Vehicle Door', 'keyboard', Config.LockedControl)
