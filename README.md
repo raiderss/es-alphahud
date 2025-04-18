@@ -41,3 +41,9 @@ Join our Discord community for real-time support and regular updates:
 
 ## Contributors
 - **Raider#0101**
+
+---
+
+## Tags
+
+#fivem-hud #gta5-ui #qbcore-hud #fivem-interface #responsive-hud #fivem-scripts #roleplay-hud #gta5-mods #fivem-development #fivem-resources #server-essentials #fivem-ui #custom-hud #esx-compatible #qbcore-framework #modern-interface #adsense-compatible #seo-optimized #ui-framework #gaming-scripts #hud-system #fivem-status-bars #player-stats-display #game-user-interface #fivem-gaming-ui #roleplay-interface #fivem-resource #server-scripts #fivem-roleplay #qbcore-resources
